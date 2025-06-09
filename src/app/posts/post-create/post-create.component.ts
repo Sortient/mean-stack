@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { PostService } from '../post.service';
 
 @Component({
   selector: 'app-post-create',
@@ -13,13 +14,15 @@ import { MatButtonModule } from '@angular/material/button';
 export class PostCreateComponent {
   enteredContent = '';
   enteredTitle = '';
-  @Output() postCreated = new EventEmitter();
 
-  onAddPost() {
-    const post = { 
-      title: this.enteredTitle, 
-      content: this.enteredContent 
-    };
-    this.postCreated.emit(post);
+  constructor(public postsService: PostService) {
+
+  }
+
+  onAddPost(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
+    this.postsService.addPost(form.value.enteredTitle, form.value.enteredContent);
   }
 }

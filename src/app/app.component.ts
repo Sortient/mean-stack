@@ -11,9 +11,5 @@ import { PostListComponent } from './posts/post-list/post-list.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  storedPosts: any[] = [];
 
-  onPostAdded(post: any) {
-    this.storedPosts.push(post);
-  }
 }

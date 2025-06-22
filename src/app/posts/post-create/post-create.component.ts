@@ -24,5 +24,6 @@ export class PostCreateComponent {
       return;
     }
     this.postsService.addPost(form.value.enteredTitle, form.value.enteredContent);
+    form.resetForm();
   }
 }

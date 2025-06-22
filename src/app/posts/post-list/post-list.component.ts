@@ -1,13 +1,13 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-
+import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { Post } from '../post.model';
 import { PostService } from '../post.service';
 
 @Component({
   selector: 'app-post-list',
-  imports: [MatExpansionModule],
+  imports: [MatExpansionModule, MatButtonModule],
   templateUrl: './post-list.component.html',
   styleUrl: './post-list.component.scss'
 })
